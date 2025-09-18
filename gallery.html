@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bluefox - Gallery</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <!-- Navbar (copy from index.html) -->
+  <div id="navbar"></div>
+
+  <section class="py-16 text-center">
+    <h2 class="text-4xl font-bold text-[#091A5E]">Our Work</h2>
+    <p class="mt-4 text-gray-600">Take a look at some of our past projects!</p>
+
+    <!-- Gallery grid -->
+    <div id="gallery" class="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-8"></div>
+  </section>
+
+  <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+    <img src="images/bluefox.png" alt="Bluefox Logo" class="mx-auto h-12 mb-4">
+    <p>© 2025 Bluefox Cleaning. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Load the navbar markup
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('navbar').innerHTML = html;
+
+        // Attach event listeners AFTER injection
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        const hamb = document.getElementById('icon-hamburger');
+        const closeIcon = document.getElementById('icon-close');
+
+        if (menuBtn && menu) {
+          menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            hamb.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+          });
+        }
+      })
+      .catch(err => console.error('Navbar load error:', err));
+
+    // Gallery image loader
+    const gallery = document.getElementById("gallery");
+
+    // If your images are stored in /images folder:
+    const imageFiles = [
+      "DSC001.jpeg",
+      "DSC002.jpeg",
+      "DSC003.jpeg",
+      "DSC004.jpeg",
+      "DSC005.jpeg",
+      "DSC006.jpeg",
+      "DSC007.jpeg",
+      "DSC008.jpeg",
+      "DSC009.jpeg",
+      "DSC010.jpeg",
+      "DSC011.jpeg",
+      "DSC012.jpeg",
+      "DSC013.jpeg",
+      "DSC014.jpeg",
+      "DSC015.jpeg",
+      "DSC016.jpeg",
+      "DSC017.jpeg",
+      "DSC018.jpeg",
+      "DSC019.jpeg",
+      "DSC020.jpeg",
+      "DSC021.jpeg",
+      "DSC022.jpeg",
+      "DSC023.jpeg",
+      "DSC024.jpeg",
+      "DSC025.jpeg",
+      "DSC026.jpeg",
+    ];
+    
+
+
+    imageFiles.forEach(file => {
+      const img = document.createElement("img");
+      img.src = "images/" + file;
+      img.alt = "Bluefox cleaning project";
+      img.className = "w-full h-64 object-cover rounded-lg shadow-md hover:scale-105 transition-transform";
+      gallery.appendChild(img);
+    });
+  </script>
+
+</body>
+</html>

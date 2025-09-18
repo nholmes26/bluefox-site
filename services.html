@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | Bluefox Cleaning</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Hero Banner -->
+  <section class="relative h-72 flex items-center justify-center">
+    <img src="images/services-hero.jpeg" alt="Cleaning Services" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-[#091A5E]/70"></div>
+    <div class="relative text-center text-white px-6">
+      <h1 class="text-4xl md:text-5xl font-bold">Our Premium Services</h1>
+      <p class="mt-4 text-lg">Tailored cleaning solutions for homes, offices, and new spaces.</p>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-12">
+      <!-- Home Cleaning -->
+      <div class="p-8 bg-gray-50 rounded-xl shadow hover:shadow-xl transition text-center">
+        <img src="images/home.jpeg" alt="Home Cleaning" class="mb-6 rounded-lg">
+        <h2 class="text-2xl font-semibold text-[#091A5E]">Home Cleaning</h2>
+        <p class="mt-3 text-gray-600">Relax in a spotless home. Our team takes care of the details, from sparkling kitchens to cozy bedrooms.</p>
+      </div>
+
+      <!-- Office Cleaning -->
+      <div class="p-8 bg-gray-50 rounded-xl shadow hover:shadow-xl transition text-center">
+        <img src="images/office.jpeg" alt="Office Cleaning" class="mb-6 rounded-lg">
+        <h2 class="text-2xl font-semibold text-[#091A5E]">Office & Commercial</h2>
+        <p class="mt-3 text-gray-600">Boost productivity with a clean, organized workspace. Perfect for businesses of all sizes.</p>
+      </div>
+
+      <!-- Post Construction -->
+      <div class="p-8 bg-gray-50 rounded-xl shadow hover:shadow-xl transition text-center">
+        <img src="images/construction.jpeg" alt="Post Construction Cleaning" class="mb-6 rounded-lg">
+        <h2 class="text-2xl font-semibold text-[#091A5E]">Post Construction</h2>
+        <p class="mt-3 text-gray-600">Turn dust into shine. We make new builds and renovations move-in ready with meticulous detail.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <section class="py-20 bg-[#091A5E] text-center text-white">
+    <h2 class="text-3xl md:text-4xl font-bold">Not Sure Which Service You Need?</h2>
+    <p class="mt-4 text-lg">Let’s talk and create a custom cleaning plan that’s right for you.</p>
+    <a href="contact.html" class="mt-8 inline-block bg-[#3B82F6] px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-600 shadow-lg transition">
+      Get a Free Quote
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+    <img src="images/logo.png" alt="Bluefox Logo" class="mx-auto h-12 mb-4">
+    <p>© 2025 Bluefox Cleaning. All rights reserved.</p>
+  </footer>
+
+  <!-- Navbar Injection -->
+    <script>
+    // Load the navbar markup
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('navbar').innerHTML = html;
+
+        // Attach event listeners AFTER injection
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        const hamb = document.getElementById('icon-hamburger');
+        const closeIcon = document.getElementById('icon-close');
+
+        if (menuBtn && menu) {
+          menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            hamb.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+          });
+        }
+      })
+      .catch(err => console.error('Navbar load error:', err));
+  </script>
+
+</body>
+</html>

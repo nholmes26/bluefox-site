@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #3B82F6; /* Accent blue */
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1E3A8A;
+  color: white;
+}

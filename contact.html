@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact | Bluefox Cleaning</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Hero -->
+  <section class="relative h-56 md:h-72 flex items-center">
+    <img src="images/contact-hero.jpeg" alt="Contact Bluefox" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-[#091A5E]/75"></div>
+    <div class="relative max-w-4xl mx-auto px-6 text-white text-center">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Get in touch</h1>
+      <p class="mt-2 text-lg">Questions, quotes, or special requests — we’re here to help.</p>
+    </div>
+  </section>
+
+  <!-- Contact area -->
+  <main class="max-w-6xl mx-auto px-6 py-16">
+
+      <!-- Contact info / Hours / Map -->
+      <aside class="space-y-6">
+        <div class="bg-white rounded-xl shadow p-6">
+          <h3 class="text-lg font-semibold text-[#091A5E]">Call or email</h3>
+          <p class="mt-2 text-gray-600">Phone: <a href="tel:+15555555555" class="text-[#091A5E] font-medium">(555) 555-5555</a></p>
+          <p class="mt-1 text-gray-600">Email: <a href="mailto:hello@bluefoxcleaning.com" class="text-[#091A5E] font-medium">hello@bluefoxcleaning.com</a></p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6">
+          <h3 class="text-lg font-semibold text-[#091A5E]">Hours</h3>
+          <ul class="mt-2 text-gray-600 space-y-1">
+            <li>Mon – Fri: 8:00 AM – 6:00 PM</li>
+            <li>Sat: 9:00 AM – 2:00 PM</li>
+            <li>Sun: Closed</li>
+          </ul>
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6">
+          <h3 class="text-lg font-semibold text-[#091A5E]">Service Area</h3>
+          <p class="mt-2 text-gray-600">Serving your city & surrounding neighborhoods. We offer one-time and recurring service plans.</p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+    <img src="images/bluefox.png" alt="Bluefox Logo" class="mx-auto h-12 mb-4">
+    <p>© 2025 Bluefox Cleaning. All rights reserved.</p>
+  </footer>
+
+  <!-- Navbar injection + init + contact form handling -->
+  <script>
+    // Load navbar and initialize toggle listeners (and then the form)
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('navbar').innerHTML = html;
+        initNavbar();
+        initContactForm();
+      })
+      .catch(err => console.error('Navbar load error:', err));
+
+    function initNavbar() {
+      const menuBtn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      const hamb = document.getElementById('icon-hamburger');
+      const closeIcon = document.getElementById('icon-close');
+      if (!menuBtn || !menu) return;
+
+      menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        if (hamb && closeIcon) {
+          hamb.classList.toggle('hidden');
+          closeIcon.classList.toggle('hidden');
+        }
+        menuBtn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+      });
+
+      document.querySelectorAll('#mobile-menu a').forEach(a => {
+        a.addEventListener('click', () => {
+          menu.classList.add('hidden');
+          if (hamb && closeIcon) {
+            hamb.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          }
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    function initContactForm() {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      const statusEl = document.getElementById('form-status');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        statusEl.innerHTML = '';
+        const submitBtn = form.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+
+        const action = form.action;
+        // Simple guard: if action still has placeholder text, do a normal submit fallback
+        if (!action || action.includes('YOUR_FORM_ID')) {
+          statusEl.innerHTML = '<span class="text-yellow-600">Please replace <code>YOUR_FORM_ID</code> in the form action with your Formspree ID (or configure Netlify Forms). Submitting normally until configured.</span>';
+          submitBtn.disabled = false;
+          return;
+        }
+
+        try {
+          const res = await fetch(action, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (res.ok) {
+            form.reset();
+            statusEl.innerHTML = '<span class="text-green-600 font-semibold">Thanks! We received your request and will be in touch soon.</span>';
+          } else {
+            const data = await res.json().catch(() => ({}));
+            const errMsg = data?.errors?.map(e => e.message).join(', ') || 'Submission failed. Please try again or email hello@bluefoxcleaning.com';
+            statusEl.innerHTML = '<span class="text-red-600">' + errMsg + '</span>';
+          }
+        } catch (err) {
+          statusEl.innerHTML = '<span class="text-red-600">Network error — please try again or contact hello@bluefoxcleaning.com</span>';
+        } finally {
+          submitBtn.disabled = false;
+        }
+      });
+    }
+  </script>
+</body>
+</html>

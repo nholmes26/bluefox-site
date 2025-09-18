@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About | Bluefox Cleaning</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Hero -->
+  <section class="relative h-64 md:h-80 flex items-center">
+    <img src="images/about-hero.jpeg" alt="Bluefox team" class="absolute inset-0 w-full h-full object-cover">
+    <div class="absolute inset-0 bg-[#091A5E]/75"></div>
+    <div class="relative max-w-4xl mx-auto px-6 text-white text-center">
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">About Bluefox</h1>
+      <p class="mt-3 text-lg md:text-xl font-light">High-end cleaning with a homey touch — reliable, cheerful, and detail-obsessed.</p>
+    </div>
+  </section>
+
+  <!-- Story / Mission -->
+  <main class="max-w-6xl mx-auto px-6 py-16">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold text-[#091A5E] mb-4">Our Story</h2>
+        <p class="text-gray-600 leading-relaxed mb-4">
+          Bluefox began with a simple idea: premium cleaning should feel personal. We combine
+          meticulous attention to detail with friendly, trustworthy teams who treat your space
+          like their own. Whether it’s a family home or a busy office, we deliver a calm,
+          spotless environment you’ll enjoy returning to.
+        </p>
+
+        <h3 class="text-xl font-semibold text-[#091A5E] mt-6">Our promise to you</h3>
+        <ul class="mt-3 space-y-3 text-gray-600">
+          <li>• Background-checked and insured teams</li>
+          <li>• Premium, eco-friendly products available</li>
+          <li>• Reliable scheduling and clear communication</li>
+        </ul>
+      </div>
+
+    <!-- Trust / Values -->
+    <section class="mt-16 bg-white rounded-xl shadow p-8">
+      <h3 class="text-2xl font-bold text-[#091A5E] mb-6 text-center">Trusted, Thoughtful & Simple</h3>
+      <div class="grid md:grid-cols-2 gap-6 text-center">
+
+        <div>
+          <div class="inline-flex items-center justify-center h-16 w-16 rounded-full bg-[#091A5E] text-white mx-auto mb-3">✅</div>
+          <h4 class="font-semibold">Background-checked Teams</h4>
+          <p class="text-gray-600 mt-2">Every team member is vetted and trained for consistency.</p>
+        </div>
+
+        <div>
+          <div class="inline-flex items-center justify-center h-16 w-16 rounded-full bg-[#091A5E] text-white mx-auto mb-3">🌱</div>
+          <h4 class="font-semibold">Eco Options</h4>
+          <p class="text-gray-600 mt-2">We offer greener product choices that are gentle on your home.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="mt-12 text-center">
+      <a href="contact.html" class="inline-block bg-[#091A5E] text-white px-8 py-3 rounded-lg font-semibold shadow hover:bg-[#0b1f6b] transition">
+        Book a Consultation
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-400 py-10 text-center">
+    <img src="images/bluefox.png" alt="Bluefox Logo" class="mx-auto h-12 mb-4">
+    <p>© 2025 Bluefox Cleaning. All rights reserved.</p>
+  </footer>
+
+  <!-- Navbar injection + init -->
+  <script>
+    // Load navbar and initialize toggle listeners
+    fetch('navbar.html')
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById('navbar').innerHTML = html;
+        initNavbar(); // defined below
+      })
+      .catch(err => console.error('Navbar load error:', err));
+
+    function initNavbar() {
+      const menuBtn = document.getElementById('mobile-menu-button');
+      const menu = document.getElementById('mobile-menu');
+      const hamb = document.getElementById('icon-hamburger');
+      const closeIcon = document.getElementById('icon-close');
+      if (!menuBtn || !menu) return;
+
+      menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+        if (hamb && closeIcon) {
+          hamb.classList.toggle('hidden');
+          closeIcon.classList.toggle('hidden');
+        }
+        menuBtn.setAttribute('aria-expanded', String(!menu.classList.contains('hidden')));
+      });
+
+      // close mobile menu when a mobile link is clicked
+      document.querySelectorAll('#mobile-menu a').forEach(a => {
+        a.addEventListener('click', () => {
+          menu.classList.add('hidden');
+          if (hamb && closeIcon) {
+            hamb.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          }
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+</body>
+</html>
