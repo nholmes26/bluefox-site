@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
   <!-- Navbar -->
   <div id="navbar"></div>
@@ -22,35 +22,39 @@
     </div>
   </section>
 
-  <!-- Story / Mission -->
-  <main class="max-w-6xl mx-auto px-6 py-16">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="text-3xl font-bold text-[#091A5E] mb-4">Our Story</h2>
-        <p class="text-gray-600 leading-relaxed mb-4">
-          Bluefox began with a simple idea: premium cleaning should feel personal. We combine
-          meticulous attention to detail with friendly, trustworthy teams who treat your space
-          like their own. Whether it’s a family home or a busy office, we deliver a calm,
-          spotless environment you’ll enjoy returning to.
-        </p>
+  <!-- Main Content -->
+  <main class="flex-grow">
+    <!-- Story / Mission -->
+    <div class="max-w-6xl mx-auto px-6 py-16">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl font-bold text-[#091A5E] mb-4">Our Story</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Bluefox began with a simple idea: premium cleaning should feel personal. We combine
+            meticulous attention to detail with friendly, trustworthy teams who treat your space
+            like their own. Whether it’s a family home or a busy office, we deliver a calm,
+            spotless environment you’ll enjoy returning to.
+          </p>
 
-        <h3 class="text-xl font-semibold text-[#091A5E] mt-6">Our promise to you</h3>
-        <ul class="mt-3 space-y-3 text-gray-600">
-          <li>• Background-checked and insured teams</li>
-          <li>• Premium, eco-friendly products available</li>
-          <li>• Reliable scheduling and clear communication</li>
-        </ul>
+          <h3 class="text-xl font-semibold text-[#091A5E] mt-6">Our promise to you</h3>
+          <ul class="mt-3 space-y-3 text-gray-600">
+            <li>• Background-checked and insured teams</li>
+            <li>• Premium, eco-friendly products available</li>
+            <li>• Reliable scheduling and clear communication</li>
+          </ul>
+        </div>
       </div>
+    </div>
 
     <!-- Why choose us -->
-    <section class="mt-4 bg-white rounded-xl shadow p-8">
-    <h3 class="text-2xl md:text-3xl font-bold text-[#091A5E] mb-6 text-center">
+    <section class="mt-4 bg-white rounded-xl shadow p-8 max-w-6xl mx-auto">
+      <h3 class="text-2xl md:text-3xl font-bold text-[#091A5E] mb-6 text-center">
         Trusted for a reason
-    </h3>
-    <p class="text-center text-gray-600 max-w-2xl mx-auto">
+      </h3>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto">
         We keep things simple: excellent results, clear communication, and dependable service.
-    </p>
-    <div class="mt-12 grid md:grid-cols-3 gap-8 text-center">
+      </p>
+     <div class="mt-12 grid md:grid-cols-3 gap-8 text-center">
         <div>
         <div class="inline-flex items-center justify-center h-16 w-16 rounded-full bg-[#091A5E] text-white mx-auto mb-4 text-2xl">
             ✅
@@ -81,27 +85,28 @@
     </div>
     </section>
 
-   <!-- CTA / Contact strip -->
-  <section class="py-16 bg-[#091A5E]">
-    <div class="max-w-6xl mx-auto px-6 text-center text-white">
-      <h2 class="text-3xl md:text-4xl font-bold">Ready for a cleaner space?</h2>
-      <p class="mt-4 text-white/90">Tell us what you need — we’ll follow up with a fast, friendly quote.</p>
-      <div class="mt-8 flex flex-wrap gap-4 justify-center">
-        <a href="contact.html" class="inline-block bg-white text-[#091A5E] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow">
-          Book Now
-        </a>
-        <a href="contact.html" class="inline-block bg-[#3B82F6] px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 transition shadow">
-          Get a Free Quote
-        </a>
+    <!-- CTA / Contact strip -->
+    <section class="py-16 bg-[#091A5E] mt-12">
+      <div class="max-w-6xl mx-auto px-6 text-center text-white">
+        <h2 class="text-3xl md:text-4xl font-bold">Ready for a cleaner space?</h2>
+        <p class="mt-4 text-white/90">Tell us what you need — we’ll follow up with a fast, friendly quote.</p>
+        <div class="mt-8 flex flex-wrap gap-4 justify-center">
+          <a href="contact.html" class="inline-block bg-white text-[#091A5E] px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition shadow">
+            Book Now
+          </a>
+          <a href="contact.html" class="inline-block bg-[#3B82F6] px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 transition shadow">
+            Get a Free Quote
+          </a>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400">
+  <footer class="bg-gray-900 text-gray-400 w-full">
     <div class="max-w-6xl mx-auto px-6 py-12 grid md:grid-cols-4 gap-8">
-      <div class="md:col-span-2">
-        <center><img src="images/bluefox.png" alt="Bluefox Logo" class="h-12 mb-4 justify-center" /></center>
+      <div class="md:col-span-2 text-center md:text-left">
+        <img src="images/bluefox.png" alt="Bluefox Logo" class="h-12 mb-4 mx-auto md:mx-0" />
         <p>For a More Cunning Clean.</p>
       </div>
       <div>
