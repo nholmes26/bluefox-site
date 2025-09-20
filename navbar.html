@@ -1,46 +1,102 @@
-<nav class="bg-[#091A5E] text-white shadow-md">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="flex items-center justify-between h-20">
-      <!-- Logo -->
-      <a href="index.html" class="flex items-center space-x-3">
-        <img src="images/logo.png" alt="Bluefox Logo" class="h-10 w-auto rounded">
-        <span class="text-2xl font-bold tracking-tight">Bluefox</span>
-      </a>
+<!-- navbar.html -->
+<nav class="bg-white border-b border-gray-200 shadow-sm relative z-50">
+  <style>
+    /* Remove default summary triangle */
+    summary::-webkit-details-marker { display: none; }
+    summary::marker { content: ""; }
+  </style>
 
-      <!-- Desktop Links -->
-      <div class="hidden md:flex space-x-10 text-lg font-medium">
-        <a href="index.html" class="hover:text-[#3B82F6] transition">Home</a>
-        <a href="services.html" class="hover:text-[#3B82F6] transition">Services</a>
-        <a href="gallery.html" class="hover:text-[#3B82F6] transition">Gallery</a>
-        <a href="about.html" class="hover:text-[#3B82F6] transition">About</a>
-        <a href="contact.html" class="hover:text-[#3B82F6] transition">Contact</a>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="index.html">
+          <img src="images/bluefox.png" alt="Bluefox Logo" class="h-12">
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex space-x-8 font-semibold items-center">
+        <a href="index.html" class="text-gray-800 hover:text-gray-600">Home</a>
+        <a href="about.html" class="text-gray-800 hover:text-gray-600">About Us</a>
+
+        <!-- Desktop Services Dropdown (no JS) -->
+        <details class="relative">
+          <summary class="cursor-pointer text-gray-800 hover:text-gray-600 flex items-center">
+            <span>Services</span>
+            <span class="ml-1">▾</span>
+          </summary>
+          <div class="absolute left-0 mt-2 w-64 bg-white shadow-md rounded-md py-2 border border-gray-100">
+            <a href="services.html#home" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Home Cleaning</a>
+            <a href="services.html#office" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Office/Commercial Cleaning</a>
+            <a href="services.html#construction" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Post Construction Cleaning</a>
+          </div>
+        </details>
+
+        <a href="faq.html" class="text-gray-800 hover:text-gray-600">FAQ</a>
+        <a href="contact.html" class="text-gray-800 hover:text-gray-600">Contact Us</a>
+      </div>
+
+      <!-- Book Now -->
+      <div class="hidden md:block">
+        <a href="contact.html" class="bg-[#091A5E] text-white px-4 py-2 rounded hover:bg-[#0B2C91] transition">
+          Book Now
+        </a>
       </div>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-button" aria-controls="mobile-menu" aria-expanded="false"
-              class="md:hidden p-2 rounded focus:outline-none">
-        <!-- Hamburger -->
-        <svg id="icon-hamburger" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
-             viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-        <!-- Close (hidden by default) -->
-        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 hidden" fill="none"
-             viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" aria-label="Toggle menu">
+          <svg id="icon-hamburger" class="h-6 w-6 text-gray-800" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+          <svg id="icon-close" class="h-6 w-6 text-gray-800 hidden" fill="none" stroke="currentColor" stroke-width="2"
+               viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 
-  <!-- Mobile Menu (hidden by default) -->
-  <div id="mobile-menu" class="hidden md:hidden bg-[#091A5E] px-6 pb-6 space-y-4 text-lg font-medium">
-    <a href="index.html" class="block hover:text-[#3B82F6]">Home</a>
-    <a href="services.html" class="block hover:text-[#3B82F6]">Services</a>
-    <a href="gallery.html" class="block hover:text-[#3B82F6]">Gallery</a>
-    <a href="about.html" class="block hover:text-[#3B82F6]">About</a>
-    <a href="contact.html" class="block hover:text-[#3B82F6]">Contact</a>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-1 font-semibold bg-gray-50 border-t border-gray-200">
+    <a href="index.html" class="block text-gray-800 hover:text-gray-600">Home</a>
+    <a href="about.html" class="block text-gray-800 hover:text-gray-600">About Us</a>
+
+    <!-- Mobile Services Dropdown (no JS for submenu) -->
+    <details class="w-full">
+      <summary class="cursor-pointer text-gray-800 hover:text-gray-600 flex justify-between items-center py-2">
+        <span>Services</span>
+        <span>▾</span>
+      </summary>
+      <div class="pl-4 mt-1 space-y-1">
+        <a href="services.html#home" class="block text-gray-800 hover:text-gray-600">Home Cleaning</a>
+        <a href="services.html#office" class="block text-gray-800 hover:text-gray-600">Office/Commercial Cleaning</a>
+        <a href="services.html#construction" class="block text-gray-800 hover:text-gray-600">Post Construction Cleaning</a>
+      </div>
+    </details>
+
+    <a href="faq.html" class="block text-gray-800 hover:text-gray-600">FAQ</a>
+    <a href="contact.html" class="block text-gray-800 hover:text-gray-600">Contact Us</a>
+    <a href="contact.html" class="block bg-[#091A5E] text-white px-4 py-2 rounded hover:bg-[#0B2C91] transition">Book Now</a>
   </div>
 </nav>
+
+<script>
+  // Mobile menu toggle (only JS needed)
+  const menuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconHamburger = document.getElementById('icon-hamburger');
+  const iconClose = document.getElementById('icon-close');
+
+  if (menuButton && mobileMenu) {
+    menuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      iconHamburger.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+  }
+</script>
